@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to WakeKill</title>
+</head>
+<body>
+<h1>Ambient Intelligence 2016</h1>
+<p>Welcome {{ session['user'] }} to the WakeKill project</p>
+<img src='{{ url_for('static', filename='rooster.jpg') }}'>
+
+
+{% if session['valid'] %}
+        <p><a href="{{ url_for('logout') }}">Logout</a></p>
+
+{% else %}
+
+<form action="{{ url_for('login') }}" method="post">
+    <p>
+        <label>Enter name: <input type="text" name="user"></label>
+        <input type="submit" value="Enter">
+    </p>
+</form>
+{% endif %}
+
+
+<p>&copy; <a href='{{ url_for('about') }}'>SmartRooster</a> {{ copy_year }}</p>
+</body>
+</html>
